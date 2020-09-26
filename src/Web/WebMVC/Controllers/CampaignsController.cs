@@ -2,7 +2,7 @@ namespace Microsoft.eShopOnContainers.WebMVC.Controllers
 {
     using AspNetCore.Authorization;
     using AspNetCore.Mvc;
-    using global::WebMVC.Models;
+    using global::WebMVC.Services.ModelDTOs;
     using global::WebMVC.Services;
     using global::WebMVC.ViewModels;
     using Microsoft.Extensions.Options;
@@ -11,8 +11,9 @@ namespace Microsoft.eShopOnContainers.WebMVC.Controllers
     using System.Threading.Tasks;
     using ViewModels;
     using ViewModels.Pagination;
+    using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
-    [Authorize]
+    [Authorize(AuthenticationSchemes = OpenIdConnectDefaults.AuthenticationScheme)]
     public class CampaignsController : Controller
     {
         private readonly ICampaignService _campaignService;
